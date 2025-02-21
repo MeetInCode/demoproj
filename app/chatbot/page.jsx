@@ -15,11 +15,14 @@ export default function Chatbot() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:5328/api/chatbot", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
-      });
+      const response = await fetch(
+        "https://demoproj-3491.vercel.app/api/chatbot",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        }
+      );
 
       const data = await response.json();
       setChat([...newChat, { sender: "bot", text: data.reply }]);
